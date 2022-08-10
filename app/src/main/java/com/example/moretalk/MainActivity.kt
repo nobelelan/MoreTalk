@@ -1,14 +1,17 @@
 package com.example.moretalk
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
-import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.moretalk.databinding.ActivityMainBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,12 +19,16 @@ class MainActivity : AppCompatActivity() {
 
     private var navController: LiveData<NavController>? = null
 
+    private lateinit var auth: FirebaseAuth
+
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.materialToolbar)
+
+        auth = FirebaseAuth.getInstance()
 
         if (savedInstanceState == null)
             setUpBottomNav()
@@ -54,5 +61,21 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return navController?.value?.navigateUp()!! || super.onSupportNavigateUp()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_log_out){
+            auth.signOut()
+            val intent = Intent(this@MainActivity, LogInActivity::class.java)
+            finish()
+            startActivity(intent)
+            return true
+        }
+        return true
     }
 }

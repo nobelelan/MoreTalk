@@ -7,13 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moretalk.databinding.FragmentChatBinding
+import com.google.firebase.database.*
 
 
 class ChatFragment : Fragment() {
 
     private var _binding: FragmentChatBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var userList: ArrayList<User>
+    private lateinit var adapter: UserAdapter
+
+    private lateinit var dbRef: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,12 +34,35 @@ class ChatFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentChatBinding.bind(view)
 
-        val navController = findNavController()
+//        val navController = findNavController()
 
-        binding.txtChatFragment.setOnClickListener {
-            val action = ChatFragmentDirections.actionChatFragmentToConversationFragment()
-            navController.navigate(action)
-        }
+//        binding.txtChatFragment.setOnClickListener {
+//            val action = ChatFragmentDirections.actionChatFragmentToConversationFragment()
+//            navController.navigate(action)
+//        }
+
+        dbRef = FirebaseDatabase.getInstance().getReference()
+
+        userList = ArrayList()
+        adapter = UserAdapter(userList)
+        binding.userRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.userRecyclerView.adapter = adapter
+
+        dbRef.child("user").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                userList.clear()
+                for(postSnapshot in snapshot.children){
+                    val currentUser = postSnapshot.getValue(User::class.java)
+                    userList.add(currentUser!!)
+                }
+                adapter.notifyDataSetChanged()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
     }
 
     override fun onDestroyView() {
