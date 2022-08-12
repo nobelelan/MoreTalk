@@ -9,6 +9,7 @@ import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moretalk.databinding.FragmentChatBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 
@@ -22,6 +23,8 @@ class ChatFragment : Fragment() {
 
     private lateinit var dbRef: DatabaseReference
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,13 +37,14 @@ class ChatFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentChatBinding.bind(view)
 
-//        val navController = findNavController()
+        val navController = findNavController()
 
 //        binding.txtChatFragment.setOnClickListener {
 //            val action = ChatFragmentDirections.actionChatFragmentToConversationFragment()
 //            navController.navigate(action)
 //        }
 
+        auth = FirebaseAuth.getInstance()
         dbRef = FirebaseDatabase.getInstance().getReference()
 
         userList = ArrayList()
@@ -54,7 +58,9 @@ class ChatFragment : Fragment() {
                 userList.clear()
                 for(postSnapshot in snapshot.children){
                     val currentUser = postSnapshot.getValue(User::class.java)
-                    userList.add(currentUser!!)
+                    if (auth.currentUser?.uid != currentUser?.uid){
+                        userList.add(currentUser!!)
+                    }
                 }
                 adapter.notifyDataSetChanged()
             }

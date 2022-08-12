@@ -18,5 +18,12 @@
         android:id="@+id/conversationFragment"
         android:name="com.example.moretalk.ConversationFragment"
         android:label="fragment_conversation"
-        tools:layout="@layout/fragment_conversation" />
+        tools:layout="@layout/fragment_conversation" >
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="uid"
+            app:argType="string" />
+    </fragment>
 </navigation>
