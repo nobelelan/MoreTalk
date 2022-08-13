@@ -27,8 +27,22 @@ class SignUpActivity : AppCompatActivity() {
             val name = binding.edtName.text.toString()
             val email = binding.edtEmail.text.toString()
             val password = binding.edtPassword.text.toString()
+            val confirmPassword = binding.edtConfirmPassword.text.toString()
 
-            signUp(name, email, password)
+            if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()){
+                if (password == confirmPassword){
+                    signUp(name, email, password)
+                }else{
+                    Toast.makeText(this@SignUpActivity,"Passwords don't match.", Toast.LENGTH_SHORT).show()
+                }
+            }else{
+                Toast.makeText(this@SignUpActivity,"Fields can't be empty.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        binding.txtAlreadyRegistered.setOnClickListener {
+            val intent = Intent(this, LogInActivity::class.java)
+            startActivity(intent)
         }
     }
 
