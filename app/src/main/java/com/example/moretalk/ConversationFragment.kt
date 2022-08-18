@@ -42,8 +42,7 @@ class ConversationFragment : Fragment() {
 
         val name = args.name
         val receiverUid = args.uid
-        val materialToolBar = activity?.findViewById<MaterialToolbar>(R.id.materialToolbar)
-        materialToolBar?.title = name
+        binding.toolbar.setTitle(name)
 
         val senderUid = FirebaseAuth.getInstance().currentUser?.uid
 

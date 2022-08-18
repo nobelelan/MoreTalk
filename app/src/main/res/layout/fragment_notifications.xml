@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChatFragment">
+    tools:context=".NotificationsFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="4dp"
         android:background="@color/white"
+        android:padding="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,40 +21,38 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:padding="4dp"
-            android:background="@drawable/button_black_background"
+            android:background="@color/white"
             android:minHeight="?attr/actionBarSize"
+            android:padding="4dp"
             android:theme="?attr/actionBarTheme">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/image_search_friends"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/search"/>
-                <EditText
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/text_user_name"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Search"
-                    android:layout_marginEnd="15dp"
-                    android:layout_toEndOf="@id/image_search_friends"/>
+                    android:layout_centerVertical="true"
+                    android:maxLines="1"
+                    android:text="Notifications"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
             </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/user_recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        tools:listitem="@layout/user_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

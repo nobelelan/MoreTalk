@@ -4,15 +4,23 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/drawable/button_background.xml" value="0.2985" />
+        <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/drawable/button_black_background.xml" value="0.215" />
+        <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/drawable/buttons_background.xml" value="0.215" />
         <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/drawable/circle.xml" value="0.215" />
         <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/drawable/edt_background.xml" value="0.2985" />
+        <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/drawable/ic_chat.xml" value="0.215" />
+        <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.215" />
+        <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.215" />
+        <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.215" />
+        <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/drawable/inputs_background.xml" value="0.215" />
         <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/layout/activity_log_in.xml" value="0.358695652173913" />
-        <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/layout/fragment_chat.xml" value="0.3484375" />
         <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/layout/fragment_conversation.xml" value="0.358695652173913" />
         <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/layout/fragment_feed.xml" value="0.358695652173913" />
-        <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/layout/fragment_profile.xml" value="0.358695652173913" />
+        <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/layout/fragment_notifications.xml" value="0.3625" />
+        <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/layout/received_message.xml" value="0.3625" />
         <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/layout/sent_message.xml" value="0.3625" />
         <entry key="..\:/AndroidStudioProjects/MoreTalk/app/src/main/res/layout/user_layout.xml" value="0.33" />

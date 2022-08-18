@@ -19,16 +19,16 @@ class MainActivity : AppCompatActivity() {
 
     private var navController: LiveData<NavController>? = null
 
-    private lateinit var auth: FirebaseAuth
+//    private lateinit var auth: FirebaseAuth
 
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.materialToolbar)
+//        setSupportActionBar(binding.materialToolbar)
 
-        auth = FirebaseAuth.getInstance()
+//        auth = FirebaseAuth.getInstance()
 
         if (savedInstanceState == null)
             setUpBottomNav()
@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
         val graphIds = listOf(
             R.navigation.chat_nav_graph,
             R.navigation.feed_nav_graph,
+            R.navigation.notifications_nav_graph,
             R.navigation.profile_nav_graph
         )
         val controller = binding.bottomNavigationView.setupWithNavController(
@@ -53,29 +54,29 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_host_fragment,
             intent
         )
-        controller.observe(this){
-            setupActionBarWithNavController(it)
-        }
+//        controller.observe(this){
+//            setupActionBarWithNavController(it)
+//        }
         navController = controller
     }
-
-    override fun onSupportNavigateUp(): Boolean {
-        return navController?.value?.navigateUp()!! || super.onSupportNavigateUp()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.menu_log_out){
-            auth.signOut()
-            val intent = Intent(this@MainActivity, LogInActivity::class.java)
-            finish()
-            startActivity(intent)
-            return true
-        }
-        return true
-    }
+//
+//    override fun onSupportNavigateUp(): Boolean {
+//        return navController?.value?.navigateUp()!! || super.onSupportNavigateUp()
+//    }
+//
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.menu, menu)
+//        return super.onCreateOptionsMenu(menu)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        if (item.itemId == R.id.menu_log_out){
+//            auth.signOut()
+//            val intent = Intent(this@MainActivity, LogInActivity::class.java)
+//            finish()
+//            startActivity(intent)
+//            return true
+//        }
+//        return true
+//    }
 }
