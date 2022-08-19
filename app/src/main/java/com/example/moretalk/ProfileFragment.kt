@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.example.moretalk.databinding.FragmentProfileBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.storage.FirebaseStorage
@@ -26,6 +27,8 @@ class ProfileFragment : Fragment() {
     private lateinit var ImageUri: Uri
 
     private lateinit var auth: FirebaseAuth
+
+    //code from insta
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,6 +50,13 @@ class ProfileFragment : Fragment() {
 
         binding.buttonUpdateProfile.setOnClickListener {
             updateProfile()
+        }
+
+        //code from insta
+
+        binding.buttonEditProfile.setOnClickListener {
+            val action = ProfileFragmentDirections.actionProfileFragmentToProfileSettingsFragment()
+            findNavController().navigate(action)
         }
     }
 
