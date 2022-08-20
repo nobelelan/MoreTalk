@@ -50,7 +50,6 @@ class SignUpActivity : AppCompatActivity() {
     private fun signUp(name: String, email: String, password: String) {
 
         val progressDialog = ProgressDialog(this)
-        progressDialog.setTitle("Sign Up")
         progressDialog.setMessage("Signing up user..")
         progressDialog.setCanceledOnTouchOutside(false)
         progressDialog.show()
@@ -61,9 +60,11 @@ class SignUpActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     addUserToDatabase(name, email, auth.currentUser?.uid)
                     progressDialog.dismiss()
+                    Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@SignUpActivity, MainActivity::class.java)
-                    finish()
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
+                    finish()
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(baseContext, "Authentication failed.",
@@ -75,6 +76,7 @@ class SignUpActivity : AppCompatActivity() {
 
     private fun addUserToDatabase(name: String, email: String, uid: String?) {
         dbRef = FirebaseDatabase.getInstance().getReference()
-        dbRef.child("user").child(uid!!).setValue(User(name, email, uid))
+        dbRef.child("user").child(uid!!).setValue(User(name, email, uid, "https://firebasestorage.googleapis.com/v0/b/moretalk-3eae1.appspot.com/o/Default%20Images%2Fprofile.png?alt=media&token=3b8143ff-2a79-445c-9cf7-979b6313e0c3","Example Bio"))
+
     }
 }

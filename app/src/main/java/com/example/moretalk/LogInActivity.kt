@@ -1,5 +1,6 @@
 package com.example.moretalk
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -40,10 +41,16 @@ class LogInActivity : AppCompatActivity() {
 
     private fun login(email: String, password: String) {
 
+        val progressDialog = ProgressDialog(this)
+        progressDialog.setMessage("Signing in..")
+        progressDialog.setCanceledOnTouchOutside(false)
+        progressDialog.show()
+
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
+                    progressDialog.dismiss()
                     val intent = Intent(this@LogInActivity, MainActivity::class.java)
                     finish()
                     startActivity(intent)
@@ -51,6 +58,7 @@ class LogInActivity : AppCompatActivity() {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT).show()
+                    progressDialog.dismiss()
                 }
             }
     }
