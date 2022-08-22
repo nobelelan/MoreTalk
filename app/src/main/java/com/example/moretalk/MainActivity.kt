@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
     private fun setUpBottomNav() {
         val graphIds = listOf(
             R.navigation.chat_nav_graph,
+            R.navigation.search_nav_graph,
             R.navigation.feed_nav_graph,
             R.navigation.notifications_nav_graph,
             R.navigation.profile_nav_graph

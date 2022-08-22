@@ -25,10 +25,11 @@ class SignUpActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         binding.buttonSignUp.setOnClickListener{
-            val name = binding.edtName.text.toString()
+            val name = binding.edtName.text.toString().lowercase()
             val email = binding.edtEmail.text.toString()
             val password = binding.edtPassword.text.toString()
             val confirmPassword = binding.edtConfirmPassword.text.toString()
+
 
             if (name.isNotEmpty() && email.isNotEmpty() && password.isNotEmpty() && confirmPassword.isNotEmpty()){
                 if (password == confirmPassword){
@@ -75,8 +76,11 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun addUserToDatabase(name: String, email: String, uid: String?) {
+        val userName = "exampleName"
+        val imageUrl = "https://firebasestorage.googleapis.com/v0/b/moretalk-3eae1.appspot.com/o/Default%20Images%2Fprofile.png?alt=media&token=3b8143ff-2a79-445c-9cf7-979b6313e0c3"
+        val bio = "Example Bio"
         dbRef = FirebaseDatabase.getInstance().getReference()
-        dbRef.child("user").child(uid!!).setValue(User(name, email, uid, "https://firebasestorage.googleapis.com/v0/b/moretalk-3eae1.appspot.com/o/Default%20Images%2Fprofile.png?alt=media&token=3b8143ff-2a79-445c-9cf7-979b6313e0c3","Example Bio"))
+        dbRef.child("user").child(uid!!).setValue(User(name,email, uid, imageUrl, bio, userName.lowercase()))
 
     }
 }

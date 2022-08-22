@@ -7,6 +7,10 @@
         android:icon="@drawable/ic_chat"
         android:title="" />
     <item
+        android:id="@+id/search_nav_graph"
+        android:icon="@drawable/search"
+        android:title="" />
+    <item
         android:id="@+id/feed_nav_graph"
         android:icon="@drawable/ic_feed"
         android:title="" />
